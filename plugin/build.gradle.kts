@@ -36,8 +36,8 @@ dependencies {
 gradlePlugin {
     // Define the plugin
     val greeting by plugins.creating {
-        id = "gradle.plugins.greeting"
-        implementationClass = "gradle.plugins.GradlePluginsPlugin"
+        id = "com.github.rkotkiewicz.print-ext"
+        implementationClass = "com.github.rkotkiewicz.PrintExtPlugin"
     }
 }
 
