@@ -11,11 +11,13 @@ class PrintExtPlugin: Plugin<Project> {
 
         val extension = project.extensions.create("printExt", PrintExtPluginExtension::class.java)
 
+
         project.afterEvaluate {
+            val included = extension.propNames
             project.extensions
                 .extraProperties
                 .properties
-                .filter { it.key != null }
+                .filter { included.contains(it.key) }
                 .forEach {
                     registerPrintTask(project, it.key)
                 }
