@@ -12,7 +12,13 @@ plugins {
 
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.5.0"
+
+    id("maven-publish")
+    id("com.gradle.plugin-publish") version "0.16.0"
 }
+
+group = "com.github.rkotkiewicz"
+version = "0.0.1"
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -33,11 +39,21 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }
 
+pluginBundle {
+    website = "https://github.com/rkotkiewicz/print-ext-plugin"
+    vcsUrl = "https://github.com/rkotkiewicz/print-ext-plugin"
+    tags = listOf("ext")
+}
+
+
 gradlePlugin {
-    // Define the plugin
-    val greeting by plugins.creating {
-        id = "com.github.rkotkiewicz.print-ext"
-        implementationClass = "com.github.rkotkiewicz.PrintExtPlugin"
+    plugins {
+        create("printExtPlugin") {
+            id = "com.github.rkotkiewicz.print-ext"
+            implementationClass = "com.github.rkotkiewicz.PrintExtPlugin"
+            displayName = "Print ext"
+            description = "creates print ext tasks"
+        }
     }
 }
 
@@ -58,3 +74,13 @@ tasks.check {
     // Run the functional tests as part of `check`
     dependsOn(functionalTest)
 }
+
+
+
+
+publishing {
+    repositories {
+        mavenLocal()
+    }
+}
+
