@@ -2,19 +2,17 @@ package com.github.rkotkiewicz
 
 import org.gradle.testfixtures.ProjectBuilder
 import kotlin.test.Test
-import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
-/**
- * A simple unit test for the 'gradle.plugins.greeting' plugin.
- */
 class PrintExtPluginTest {
     @Test
-    fun `plugin registers task`() {
-        // Create a test project and apply the plugin
+    fun `plugin registers extension`() {
+        //when
         val project = ProjectBuilder.builder().build()
         project.plugins.apply("com.github.rkotkiewicz.print-ext")
+        val config = project.extensions.getByName("printExt")
 
         // Verify the result
-        assertNotNull(project.tasks.findByName("greeting"))
+        assertTrue { config is PrintExtPluginExtension }
     }
 }

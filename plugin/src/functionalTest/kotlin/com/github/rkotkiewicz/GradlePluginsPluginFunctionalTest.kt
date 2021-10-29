@@ -5,9 +5,6 @@ import org.gradle.testkit.runner.GradleRunner
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
-/**
- * A simple functional test for the 'gradle.plugins.greeting' plugin.
- */
 class PrintExtPluginFunctionalTest {
     @Test fun `can run task`() {
         // Setup the test build
@@ -18,17 +15,22 @@ class PrintExtPluginFunctionalTest {
             plugins {
                 id('com.github.rkotkiewicz.print-ext')
             }
+            
+            ext {
+                foo = 'foo value'
+            }
+            
         """)
 
         // Run the build
         val runner = GradleRunner.create()
         runner.forwardOutput()
         runner.withPluginClasspath()
-        runner.withArguments("greeting")
+        runner.withArguments("printFoo", "-q")
         runner.withProjectDir(projectDir)
         val result = runner.build();
 
         // Verify the result
-        assertTrue(result.output.contains("Hello from plugin 'gradle.plugins.greeting'"))
+        assertTrue(result.output.trim() == "foo value")
     }
 }
