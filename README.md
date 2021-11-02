@@ -27,7 +27,7 @@ You can also use legacy plugin application
         }
     }
 
-    apply plugin: 'com.github.rkotkiewicz:print-ext'
+    apply plugin: 'com.github.rkotkiewicz.print-ext'
 
 ### Configuration
 
