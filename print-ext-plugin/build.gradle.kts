@@ -42,7 +42,7 @@ dependencies {
 pluginBundle {
     website = "https://github.com/rkotkiewicz/print-ext-plugin"
     vcsUrl = "https://github.com/rkotkiewicz/print-ext-plugin"
-    tags = listOf("ext")
+    tags = listOf("ext", "printExt")
 }
 
 
@@ -51,8 +51,8 @@ gradlePlugin {
         create("printExtPlugin") {
             id = "com.github.rkotkiewicz.print-ext"
             implementationClass = "com.github.rkotkiewicz.PrintExtPlugin"
-            displayName = "Print ext"
-            description = "creates print ext tasks"
+            displayName = "Print ext plugin"
+            description = "This Gradle plugin creates tasks that print selected ext properties."
         }
     }
 }
@@ -74,13 +74,3 @@ tasks.check {
     // Run the functional tests as part of `check`
     dependsOn(functionalTest)
 }
-
-
-
-
-publishing {
-    repositories {
-        mavenLocal()
-    }
-}
-

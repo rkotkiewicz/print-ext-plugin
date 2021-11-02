@@ -8,4 +8,4 @@
  */
 
 rootProject.name = "print-ext-plugin"
-include("plugin")
+include("print-ext-plugin")
