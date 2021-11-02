@@ -58,8 +58,8 @@ For the above configuration we will get three tasks:
 
 You can now run a print property task:
 
-    ./gradlew -q print<ExtProperty>
+    ./gradlew -q printExtProperty2
 
-It will print 'bar1'.
+It will print 'foo2'.
 
 
